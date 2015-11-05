@@ -1,8 +1,8 @@
 class DockerCompletion < Formula
   desc "Bash, Zsh and Fish completion for Docker"
   homepage "https://github.com/docker/docker"
-  url "https://github.com/docker/docker/archive/v1.8.1.tar.gz"
-  sha256 "7f22e88a994dc1bc143f87215de01ccd902450e6e8d747467d042a56db792b03"
+  url "https://github.com/docker/docker/archive/v1.9.0.tar.gz"
+  sha256 "1c06baea61971a711f9e510800fb4de5e0d8a6560963cfdc891e0037b40dc974"
   head "https://github.com/docker/docker"
 
   conflicts_with "docker",
