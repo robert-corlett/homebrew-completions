@@ -18,6 +18,6 @@ class DockerCompletion < Formula
 
   test do
     assert_match "-F _docker",
-      shell_output("source #{bash_completion}/docker && complete -p docker")
+      shell_output("bash -c 'source #{bash_completion}/docker && complete -p docker'")
   end
 end
