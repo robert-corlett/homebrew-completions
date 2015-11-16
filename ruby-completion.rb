@@ -1,10 +1,20 @@
 class RubyCompletion < Formula
+  desc "Bash completion for Ruby"
   homepage "https://github.com/mernen/completion-ruby"
-  url "https://raw.githubusercontent.com/mernen/completion-ruby/790a467456851fb563a5bbd26628465febbec2cc/completion-ruby"
-  sha1 "25ec4eb61601f3e17286503e270ad44256938255"
-  version "1"
+  url "https://github.com/mernen/completion-ruby.git",
+    :revision => "f3e4345042b0cc48317e45b673dfd3d23904b9a7"
+  version "2"
+
+  head "https://github.com/mernen/completion-ruby.git"
+
+  bottle :unneeded
 
   def install
     bash_completion.install "completion-ruby" => "ruby"
+  end
+
+  test do
+    assert_match "-F __ruby",
+      shell_output("source #{bash_completion}/ruby && complete -p ruby")
   end
 end

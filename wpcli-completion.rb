@@ -1,12 +1,19 @@
 class WpcliCompletion < Formula
+  desc "Bash completion for Wpcli"
   homepage "https://github.com/wp-cli/wp-cli"
-  url "https://raw.githubusercontent.com/wp-cli/wp-cli/v0.18.0/utils/wp-completion.bash"
-  sha256 "e67edfcd9cd9a75d09d840c612d8af5f39655ccfef45b6d6f84784a8106cefad"
-  version "0.18.0"
+  url "https://github.com/wp-cli/wp-cli/archive/v0.19.2.tar.gz"
+  sha256 "08380d66c251ce17065fb8d082d004760746fefc751be74faea1ca61063b524b"
 
-  head "https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash"
+  head "https://github.com/wp-cli/wp-cli.git"
+
+  bottle :unneeded
 
   def install
-    bash_completion.install "wp-completion.bash" => "wp"
+    bash_completion.install "utils/wp-completion.bash" => "wp"
+  end
+
+  test do
+    assert_match "-F _wp_complete",
+      shell_output("source #{bash_completion}/wp && complete -p wp")
   end
 end

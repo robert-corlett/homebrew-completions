@@ -1,11 +1,19 @@
 class BoomCompletion < Formula
+  desc "Bash and Zsh completion for Boom"
   homepage "http://zachholman.com/boom"
-  version "0.4.0"
-  url "https://raw.githubusercontent.com/holman/boom/v0.4.0/completion/boom.bash"
-  sha1 "c35c511c7af864973df0a8ef6ab9faeca485ca53"
-  head "https://raw.githubusercontent.com/holman/boom/master/completion/boom.bash"
+  url "https://github.com/holman/boom/archive/v0.4.0.tar.gz"
+  sha256 "1212ed265ef7c39298dd6630cb3f8838a120d77615301c0ee188e47501dcdef9"
+  head "https://github.com/holman/boom.git"
+
+  bottle :unneeded
 
   def install
-    bash_completion.install "boom.bash" => "boom"
+    bash_completion.install "completion/boom.bash" => "boom"
+    zsh_completion.install "completion/boom.zsh" => "_boom"
+  end
+
+  test do
+    assert_match "-F _boom_complete",
+      shell_output("source #{bash_completion}/boom && complete -p boom")
   end
 end

@@ -15,6 +15,4 @@ brew install https://raw.githubusercontent.com/Homebrew/homebrew-completions/mas
 
 Docs
 ----
-`brew help`, `man brew`, or the Homebrew [wiki][].
-
-[wiki]:http://wiki.github.com/Homebrew/homebrew
+`brew help` or `man brew`.

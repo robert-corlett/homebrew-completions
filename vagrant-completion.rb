@@ -1,11 +1,19 @@
 class VagrantCompletion < Formula
+  desc "Bash completion for Vagrant"
   homepage "https://github.com/mitchellh/vagrant"
-  version "1.7.2"
-  url "https://raw.githubusercontent.com/mitchellh/vagrant/v1.7.2/contrib/bash/completion.sh"
-  sha1 "66d62d1828885fb034eb80eba1a590c6b5369ba1"
-  head "https://raw.githubusercontent.com/mitchellh/vagrant/master/contrib/bash/completion.sh"
+  url "https://github.com/mitchellh/vagrant/archive/v1.7.4.tar.gz"
+  sha256 "76c52baab71bbaea2fbc9f6a6874b12f3abe362c20e61c954367f70f15f90df6"
+
+  head "https://github.com/mitchellh/vagrant.git"
+
+  bottle :unneeded
 
   def install
-    bash_completion.install "completion.sh" => "vagrant"
+    bash_completion.install "contrib/bash/completion.sh" => "vagrant"
+  end
+
+  test do
+    assert_match "-F _vagrant",
+      shell_output("source #{bash_completion}/vagrant && complete -p vagrant")
   end
 end

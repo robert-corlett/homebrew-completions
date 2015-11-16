@@ -1,12 +1,15 @@
 class FabricCompletion < Formula
+  desc "Bash completion for Fabric"
   homepage "https://github.com/kbakulin/fabric-completion"
-  url "https://raw.githubusercontent.com/kbakulin/fabric-completion/5b5910492046e6335af0e88550176d2583d9a510/fabric-completion.bash"
-  sha1 "01c51e0680f63879e558daaaad91064d8cd4d291"
-  head "https://raw.githubusercontent.com/kbakulin/fabric-completion/master/fabric-completion.bash"
+  url "https://github.com/kbakulin/fabric-completion.git",
+    :revision => "5b5910492046e6335af0e88550176d2583d9a510"
   version "1"
+  head "https://raw.githubusercontent.com/kbakulin/fabric-completion.git"
+
+  bottle :unneeded
 
   def install
-    bash_completion.install "fabric-completion.bash"  => "fabric"
+    bash_completion.install "fabric-completion.bash" => "fabric"
   end
 
   def caveats; <<-EOS.undent
@@ -15,5 +18,10 @@ class FabricCompletion < Formula
 
       For more details and configuration refer to the home page.
     EOS
+  end
+
+  test do
+    assert_match "-F __fab_completion",
+      shell_output("source #{bash_completion}/fabric && complete -p fab")
   end
 end
